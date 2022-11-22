@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 #define err -1
 #define success 0
@@ -40,22 +41,37 @@ int parse_table(struct Matrix *matrix, FILE *fp)
   }
   return success;
 }
-
+int cluster_matrix(int num_clusters, struct Matrix *matrix)
+{
+  for (int i = 0; i < matrix->size; i++) {
+    for (int o = 0; o < matrix->size; o++) {
+    }
+  }
+  return err;
+}
+float calculate_lenght(struct Object *obj_a,struct Object *obj_b)
+{
+  float lenght = -1;
+  int a = obj_a->x - obj_b->x;
+  a = abs(a);
+  
+  return lenght;
+}
 
 int main (int argc, char *argv[])
 {
   if (argc != 3) {
-    printf("Wrong number of arguments supplied");
+    printf("Wrong number of arguments supplied\n");
     return err;
   }
   FILE *fp = init_file(argv[1]);
   if (!fp) {
-    printf("Wrong file supplied");
+    printf("Wrong file supplied\n");
     return err;
   }
   struct Matrix matrix;
   if (parse_table(&matrix, fp)) {
-    printf("Input file not valid");
+    printf("Input file not valid\n");
     return err;
   }
   print_matrix_cli(&matrix);
